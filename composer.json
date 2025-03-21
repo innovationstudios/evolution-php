@@ -1,0 +1,33 @@
+{
+    "name": "innovation-studios/evolution-api-plugin",
+    "description": "Plugin para integração com a API Evolution",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.1", 
+        "guzzlehttp/guzzle": "^7.0"  
+    },
+    "autoload": {
+        "psr-4": {
+            "EvolutionApiPlugin\\": "src/"  
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "EvolutionApiPlugin\\EvolutionApiServiceProvider"
+            ],
+            "aliases": {
+                "EvolutionApi": "EvolutionApiPlugin\\EvolutionApiFacade"
+            }
+        }
+    },
+    "authors": [
+        {
+            "name": "Innovation Studios",
+            "email": "contato@innovationstudios.com.br"
+        }
+    ],
+    "minimum-stability": "stable",  
+    "prefer-stable": true 
+}
