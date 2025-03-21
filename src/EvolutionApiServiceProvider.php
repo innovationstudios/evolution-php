@@ -15,7 +15,7 @@ class EvolutionApiServiceProvider extends ServiceProvider
         $this->app->singleton(EvolutionApi::class, function ($app) {
             // Configuração programática (pode ser ajustada para usar config ou .env)
             $apiKey = config('evolution.api_key'); // Chave da API
-            $apiUrl = config('evolution.api_url', 'http://82.29.62.194:8080'); // URL da API (com valor padrão)
+            $apiUrl = config('evolution.api_url', ''); // URL da API (com valor padrão)
 
             return new EvolutionApi($apiKey, $apiUrl);
         });
