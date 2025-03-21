@@ -23,7 +23,7 @@ $evolutionApi = new EvolutionApi($apiKey, $apiUrl);
 // 1. Criar uma Instância
 try {
     $instanceName = 'exampleInstance';
-    $token = '87F3F7D0-4B8A-45D0-8618-7399E4AD6469';
+    $token = '';
     $qrcode = true;
 
     $response = $evolutionApi->createInstance($instanceName, $token, $qrcode);
