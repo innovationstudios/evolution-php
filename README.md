@@ -37,7 +37,7 @@ Se não estiver usando Laravel, configure a API diretamente ao instanciar a clas
 use EvolutionApiPlugin\EvolutionApi;
 
 $apiKey = 'SUA_CHAVE_AQUI';
-$apiUrl = 'SEU_URL_AQUI'; // Opcional, padrão: 'http://82.29.62.194:8080'
+$apiUrl = 'SEU_URL_AQUI'; // Opcional, padrão: ''
 
 $evolutionApi = new EvolutionApi($apiKey, $apiUrl);
 ```
