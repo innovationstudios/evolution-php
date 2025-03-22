@@ -27,7 +27,5 @@
             "name": "Innovation Studios",
             "email": "contato@innovationstudios.com.br"
         }
-    ],
-    "minimum-stability": "stable",  
-    "prefer-stable": true 
+    ]
 }
