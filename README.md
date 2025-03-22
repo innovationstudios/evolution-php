@@ -71,6 +71,48 @@ $response = $evolutionApi->sendTextMessage(
 );
 ```
 
+### Envia Mensagem de Imagem
+```php
+
+$mediaMessage = [
+    'mediatype' => 'image',
+    'fileName' => 'foto.jpg',
+    'caption' => 'Esta é uma imagem de exemplo',
+    'media' => 'https://exemplo.com/foto.jpg', // URL ou base64 da mídia
+];
+$response = $evolutionApi->sendMediaMessage($instanceName, $number, $mediaMessage);
+```
+
+### Enviar Lista
+```php
+
+$listMessage = [
+    'title' => 'Título da Lista',
+    'description' => 'Descrição da Lista',
+    'footerText' => 'Texto do Rodapé',
+    'buttonText' => 'Texto do Botão',
+    'sections' => [
+        [
+            'title' => 'Seção 1',
+            'rows' => [
+                [
+                    'title' => 'Item 1',
+                    'description' => 'Descrição do Item 1',
+                    'rowId' => 'item1',
+                ],
+                [
+                    'title' => 'Item 2',
+                    'description' => 'Descrição do Item 2',
+                    'rowId' => 'item2',
+                ],
+            ],
+        ],
+    ],
+];
+
+$response = $evolutionApi->sendList($instanceName, $number, $listMessage);
+```
+
 ### Listar Instância
 
 ```php
