@@ -91,9 +91,10 @@ class EvolutionApi
         return json_decode($response->getBody(), true);
     }
 
-     /**
+    /**
      * Envia uma mensagem de texto.
      *
+     * @param string $instanceName Nome da instância.
      * @param string $number       Número de telefone no formato internacional (ex: 5511999999999).
      * @param string $text         Texto da mensagem.
      * @param array  $options      Opções adicionais (opcional).
@@ -101,7 +102,7 @@ class EvolutionApi
      * @return array
      * @throws GuzzleException
      */
-    public function sendTextMessage($number, $text, $options = [], $mentions = [])
+    public function sendTextMessage($instanceName, $number, $text, $options = [], $mentions = [])
     {
         // Estrutura básica da requisição
         $data = [
@@ -109,7 +110,7 @@ class EvolutionApi
             'textMessage' => [
                 'text' => $text,
             ],
-        ];  
+        ];
 
         // Adiciona opções, se fornecidas
         if (!empty($options)) {
@@ -125,11 +126,74 @@ class EvolutionApi
         }
 
         // Faz a requisição POST
-        $response = $this->client->post('/message/sendText/evolution', [
+        $response = $this->client->post("/message/sendText/$instanceName", [
             'json' => $data,
         ]);
 
         return json_decode($response->getBody(), true);
     }
 
+    /**
+     * Envia uma mensagem de lista.
+     *
+     * @param string $instanceName Nome da instância.
+     * @param string $number       Número de telefone no formato internacional (ex: 5511999999999).
+     * @param array  $listMessage  Estrutura da mensagem de lista.
+     * @param array  $options      Opções adicionais (opcional).
+     * @return array
+     * @throws GuzzleException
+     */
+    public function sendList($instanceName, $number, $listMessage, $options = [])
+    {
+        // Estrutura básica da requisição
+        $data = [
+            'number' => $number,
+            'listMessage' => $listMessage,
+        ];
+
+        // Adiciona opções, se fornecidas
+        if (!empty($options)) {
+            $data['options'] = $options;
+        }
+
+        // Faz a requisição POST
+        $response = $this->client->post("/message/sendList/$instanceName", [
+            'json' => $data,
+        ]);
+
+        return json_decode($response->getBody(), true);
+    }
+
+    /**
+     * Envia uma mensagem de mídia.
+     *
+     * @param string $instanceName Nome da instância.
+     * @param string $number       Número de telefone no formato internacional (ex: 5511999999999).
+     * @param array  $mediaMessage Estrutura da mensagem de mídia.
+     * @param array  $options      Opções adicionais (opcional).
+     * @return array
+     * @throws GuzzleException
+     */
+    public function sendMediaMessage($instanceName, $number, $mediaMessage, $options = [])
+    {
+        // Estrutura básica da requisição
+        $data = [
+            'number' => $number,
+            'mediaMessage' => $mediaMessage,
+        ];
+
+        // Adiciona opções, se fornecidas
+        if (!empty($options)) {
+            $data['options'] = $options;
+        }
+
+        // Faz a requisição POST
+        $response = $this->client->post("/message/sendMedia/$instanceName", [
+            'json' => $data,
+        ]);
+
+        return json_decode($response->getBody(), true);
+    }
+
+    
 }
